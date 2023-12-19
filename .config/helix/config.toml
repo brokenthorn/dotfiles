@@ -1,0 +1,88 @@
+theme = "kanagawa"
+
+[editor]
+mouse = true
+undercurl = true
+true-color = true
+line-number = "relative"
+color-modes = true
+auto-save = true # when moving away from terminal
+auto-format = true
+completion-trigger-len = 1 # default 2
+auto-info = true
+auto-pairs = true
+bufferline = "multiple"
+rulers = [100]
+text-width = 100 # for :reflow and soft-wrap.wrap-at-text-width
+
+[editor.soft-wrap]
+enable = true
+# wrap-at-text-width = true
+
+[editor.lsp]
+enable = true
+display-messages = true
+auto-signature-help = true
+display-inlay-hints = true # default false because it's still being improved on
+display-signature-help-docs = true
+snippets = true
+goto-reference-include-declaration = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "block"
+
+[editor.file-picker]
+hidden = false # show hidden files
+
+[editor.statusline]
+left = [
+  "mode", "spinner", "diagnostics", "workspace-diagnostics", "file-name",
+  "file-modification-indicator", "version-control"
+]
+center = []
+right = ["selections", "position", "file-encoding", "file-line-ending", "file-type"]
+
+[editor.indent-guides]
+render = true
+skip-levels = 1
+
+[keys.normal]
+tab = ":buffer-next"
+S-tab = ":buffer-previous"
+X = ["extend_line_up", "extend_to_line_bounds"] # the reverse of x
+
+[keys.normal.space]
+i = ":toggle lsp.display-inline-hints"
+q = ":q"
+x = ":bc"
+"," = ":w"
+"!" = ":q!"
+o = ":reload-all"
+
+[keys.insert]
+C-space = "signature_help"
+
+[keys.select]
+X = ["extend_line_up", "extend_to_line_bounds"]
+C-j = [
+  'ensure_selections_forward',
+  'extend_to_line_bounds',
+  'extend_char_right',
+  'extend_char_left',
+  'delete_selection','add_newline_below',
+  'move_line_down',
+  'replace_with_yanked',
+]
+C-k = [
+  'ensure_selections_forward',
+  'extend_to_line_bounds',
+  'extend_char_right',
+  'extend_char_left',
+  'delete_selection',
+  'move_line_up',
+  'add_newline_above',
+  'move_line_up',
+  'replace_with_yanked',
+]

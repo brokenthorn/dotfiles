@@ -1,0 +1,7 @@
+[user]
+	name = Paul-Sebastian Manole
+	email = brokenthorn@gmail.com
+[init]
+	defaultBranch = main
+[core]
+	autocrlf = false

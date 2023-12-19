@@ -1,0 +1,21 @@
+-- local on_attach = require("plugins.configs.lspconfig").on_attach
+--local capabilities = require("plugins.configs.lspconfig").capabilities
+-- local lspconfig = require("lspconfig")
+-- local util = require("lspconfig/util")
+
+-- Commented out b/c it conflicts with the simrat39/root-tools.nvim plugins
+-- which I decided to use for now instead of this barebones rust-analyzer setup:
+-- lspconfig.rust_analyzer.setup({
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   filetypes = {"rust"},
+--   root_dir = util.root_pattern("Cargo.toml"),
+--   settings = {
+--     ['rust-analyzer'] = {
+--       cargo = {
+--         allFeatures = true,
+--       }
+--     }
+--   }
+-- })
+
