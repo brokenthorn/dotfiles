@@ -10,7 +10,6 @@ if wezterm.config_builder then
 end
 
 -- Build the custom configuration we want:
-config.disable_default_key_bindings = true
 config.default_prog = { 'wsl.exe', '-d', 'Ubuntu' }
 -- config.color_scheme = 'Kanagawa (Gogh)'
 config.color_scheme = 'Ubuntu'
@@ -42,8 +41,16 @@ config.launch_menu = {
 }
 
 -- Nothing beats JetBrains Mono in legibility:
-config.font = wezterm.font('JetBrainsMonoNL NF', { weight = 'Regular' })
-config.font_size = 13
+config.font = wezterm.font('JetBrainsMonoNL NF', { weight = 'Light' })
+config.font_size = 14
+
+config.disable_default_key_bindings = true
+config.keys = {
+  {
+    key = 'F11',
+    action = wezterm.action.ToggleFullScreen,
+  },
+}
 
 return config
 
