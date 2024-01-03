@@ -1,0 +1,7 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Mappings --------------------------------
+map <leader>o <Action>(FileStructurePopup)
+map <leader>r <Action>(RenameElement)
+map <S-Space> <Action>(GotoNextError)

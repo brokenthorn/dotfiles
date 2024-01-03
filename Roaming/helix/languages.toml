@@ -1,0 +1,42 @@
+[[language]]
+name = "sql"
+scope = "source.sql"
+injection-regex = "sql"
+file-types = ["sql"]
+language-server = { command = "sql-language-server", args = ["up", "--method", "stdio"] }
+
+# [[language]]
+# name = "typescript"
+# language-servers = [  "typescript-language-server", "tailwindcss-react", "eslint", "emmet-ls"]
+# formatter = { command = 'npx', args = ["prettier", "--parser", "typescript"] }
+# indent = { tab-width = 4, unit = " " }
+# auto-format = true
+
+# [[language]]
+# name = "tsx"
+# language-servers = [ "typescript-language-server", "tailwindcss-react", "eslint", "emmet-ls"]
+# formatter = { command = 'npx', args = ["prettier", "--parser", "typescript"] }
+# indent = { tab-width = 4, unit = " " }
+# auto-format = true
+
+# [[language]]
+# name = "jsx"
+# language-servers = [ "typescript-language-server", "tailwindcss-react", "eslint", "emmet-ls"]
+# grammar = "javascript"
+# formatter = { command = 'npx', args = ["prettier", "--parser", "typescript"] }
+# indent = { tab-width = 4, unit = " " }
+# auto-format = true
+
+# [[language]]
+# name = "javascript"
+# language-servers = [ "typescript-language-server", "tailwindcss-react", "eslint", "emmet-ls"]
+# formatter = { command = 'npx', args = ["prettier", "--parser", "typescript"] }
+# indent = { tab-width = 4, unit = " " }
+# auto-format = true
+
+# [[language]]
+# name = "json"
+# language-servers = [ "vscode-json-language-server" ]
+# formatter = { command = 'npx', args = ["prettier", "--parser", "json"] }
+# indent = { tab-width = 4, unit = " " }
+# auto-format = true

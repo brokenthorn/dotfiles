@@ -1,7 +1,11 @@
+# This is Git's per-user configuration file.
 [user]
 	name = Paul-Sebastian Manole
 	email = brokenthorn@gmail.com
-[init]
-	defaultBranch = main
-[core]
-	autocrlf = false
+[safe]
+	directory = %(prefix)///wsl.localhost/Ubuntu/home/broke/projects/rust/pp-api
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

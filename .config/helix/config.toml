@@ -1,4 +1,4 @@
-theme = "kanagawa"
+theme = "ferra"
 
 [editor]
 mouse = true
@@ -54,7 +54,7 @@ S-tab = ":buffer-previous"
 X = ["extend_line_up", "extend_to_line_bounds"] # the reverse of x
 
 [keys.normal.space]
-i = ":toggle lsp.display-inline-hints"
+i = ":toggle lsp.display-inlay-hints"
 q = ":q"
 x = ":bc"
 "," = ":w"

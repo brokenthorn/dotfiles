@@ -1,0 +1,113 @@
+theme = "autumn"
+
+[editor]
+line-number = "relative"
+cursorline = true
+color-modes = true # color the mode indicator
+auto-save = true
+auto-format = true
+auto-completion = false # use C-x manually, because this triggers autocomplete in insert mode if navigating
+completion-trigger-len = 0 # default 2
+auto-info = true # whether to display info boxes, default true
+auto-pairs = true # default true, for brackets and such
+bufferline = "multiple"
+rulers = [80] # can be overridden in lang-specific config, default []
+text-width = 80 # used for :reflow and for soft-wrapping if soft-wrap.wrap-at-text-width is set
+idle-timeout = 200 # used for autocompletion, 0 means instant, default 400
+
+# [editor.auto-pairs]
+# the defaults:
+# '(' = ')'
+# '{' = '}'
+# '[' = ']'
+# '"' = '"'
+# '`' = '`'
+# '<' = '>'
+
+[editor.lsp]
+enable = true # enable LSP integration globally, default true
+display-messages = true # display LSP progress message below statue line (spinner)
+auto-signature-help = true # auto popup parameter hints, default true
+display-inlay-hints = true # default false, may need enabling in LSP as well, a bit laggy/janky under some circustances and still being improved on
+display-signature-help-docs = true # display docs under signature help popup, default false
+snippets = true # enables snippet completions, requires a server restart (:lsp-restart)
+goto-reference-include-declaration = true # include declarations in the goto reference popup, default true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false # to ignore hidden files, default true
+
+# [editor.whitespace.render]
+# space = "all"
+# tab = "all"
+# newline = "none"
+# nbsp = "none"
+
+[editor.statusline]
+left = ["mode", "spinner", "diagnostics", "workspace-diagnostics", "file-name", "file-modification-indicator", "version-control"]
+center = []
+right = ["selections", "position", "file-encoding", "file-line-ending", "file-type"]
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 20 # max free space left at the end of the line, increase value to reduce forced mid-word wrapping, default 20
+max-indent-retain = 0 # max indentation to carry over when soft wrapping, default 40
+wrap-indicator = "" # set wrap-indicator to "" to hide it
+wrap-at-text-width = false # wrap at text-width instead of the full viewport size, default false
+
+[editor.indent-guides]
+render = false
+character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[keys.normal]
+C-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+C-q = ":quit"
+tab = ":buffer-next"
+S-tab = ":buffer-previous"
+X = ["extend_line_up", "extend_to_line_bounds"]
+
+[keys.normal.space]
+i = ":toggle lsp.display-inlay-hints"
+q = ":q"
+x = ":bc"
+"," = ":w"
+"!" = ":q!"
+o = ":reload-all"
+
+[keys.insert]
+C-space = "signature_help"
+
+[keys.select]
+X = ["extend_line_up", "extend_to_line_bounds"]
+C-j = [
+  'ensure_selections_forward',
+  'extend_to_line_bounds',
+  'extend_char_right',
+  'extend_char_left',
+  'delete_selection','add_newline_below',
+  'move_line_down',
+  'replace_with_yanked',
+]
+C-k = [
+  'ensure_selections_forward',
+  'extend_to_line_bounds',
+  'extend_char_right',
+  'extend_char_left',
+  'delete_selection',
+  'move_line_up',
+  'add_newline_above',
+  'move_line_up',
+  'replace_with_yanked',
+]
+
+# Tmux 
+# [keys.normal.space.t]
+# l = ":pipe-to tmux split-window -v helix-live-grep"
+# B = ":pipe-to tmux split-window -v helix-git-blame"
+# H = ":sh helix-open-in-gh"

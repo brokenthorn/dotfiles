@@ -10,7 +10,7 @@ if wezterm.config_builder then
 end
 
 -- Build the custom configuration we want:
-config.default_prog = { 'wsl.exe', '-d', 'Ubuntu' }
+config.default_prog = { 'ubuntu.exe' }
 -- config.color_scheme = 'Kanagawa (Gogh)'
 config.color_scheme = 'Ubuntu'
 
@@ -24,7 +24,7 @@ config.window_padding = {
 config.launch_menu = {
   {
     label = 'Ubuntu (WSL)',
-    args = { 'wsl.exe', '-d', 'Ubuntu' },
+    args = { 'ubuntu.exe' },
   },
   {
     label = 'Powershell 7',
@@ -41,8 +41,8 @@ config.launch_menu = {
 }
 
 -- Nothing beats JetBrains Mono in legibility:
-config.font = wezterm.font('JetBrainsMonoNL NF', { weight = 'Light' })
-config.font_size = 14
+config.font = wezterm.font('JetBrainsMonoNL NF', { weight = 'Regular' })
+config.font_size = 12
 
 config.disable_default_key_bindings = true
 config.keys = {
