@@ -1,76 +1,59 @@
-theme = "autumn"
+theme = "ferra"
 
 [editor]
+mouse = true
+undercurl = true
+true-color = true
 line-number = "relative"
-cursorline = true
-color-modes = true # color the mode indicator
-auto-save = true
-auto-format = true
-auto-completion = false # use C-x manually, because this triggers autocomplete in insert mode if navigating
-completion-trigger-len = 0 # default 2
-auto-info = true # whether to display info boxes, default true
-auto-pairs = true # default true, for brackets and such
-bufferline = "multiple"
-rulers = [80] # can be overridden in lang-specific config, default []
-text-width = 80 # used for :reflow and for soft-wrapping if soft-wrap.wrap-at-text-width is set
-idle-timeout = 200 # used for autocompletion, 0 means instant, default 400
-
-# [editor.auto-pairs]
-# the defaults:
-# '(' = ')'
-# '{' = '}'
-# '[' = ']'
-# '"' = '"'
-# '`' = '`'
-# '<' = '>'
-
-[editor.lsp]
-enable = true # enable LSP integration globally, default true
-display-messages = true # display LSP progress message below statue line (spinner)
-auto-signature-help = true # auto popup parameter hints, default true
-display-inlay-hints = true # default false, may need enabling in LSP as well, a bit laggy/janky under some circustances and still being improved on
-display-signature-help-docs = true # display docs under signature help popup, default false
-snippets = true # enables snippet completions, requires a server restart (:lsp-restart)
-goto-reference-include-declaration = true # include declarations in the goto reference popup, default true
-
-[editor.cursor-shape]
-insert = "bar"
-normal = "block"
-select = "underline"
-
-[editor.file-picker]
-hidden = false # to ignore hidden files, default true
-
-# [editor.whitespace.render]
-# space = "all"
-# tab = "all"
-# newline = "none"
-# nbsp = "none"
-
-[editor.statusline]
-left = ["mode", "spinner", "diagnostics", "workspace-diagnostics", "file-name", "file-modification-indicator", "version-control"]
-center = []
-right = ["selections", "position", "file-encoding", "file-line-ending", "file-type"]
+color-modes = true # color mode indicator differently per mode
+auto-save = false # when moving away from terminal
+auto-format = true # formatting on save, sets this generally for all LSPs
+preview-completion-insert = true # apply completion item when selected
+auto-completion = true # automatic popup of auto-completion, else ctrl+x
+completion-trigger-len = 1 # default 2, 0 immediately shows suggestions
+auto-info = true
+auto-pairs = true
+bufferline = "multiple" # show tabs when there is more than one open
+rulers = [80, 100]
+text-width = 80 # for :reflow and soft-wrap.wrap-at-text-width
 
 [editor.soft-wrap]
 enable = true
-max-wrap = 20 # max free space left at the end of the line, increase value to reduce forced mid-word wrapping, default 20
-max-indent-retain = 0 # max indentation to carry over when soft wrapping, default 40
-wrap-indicator = "" # set wrap-indicator to "" to hide it
-wrap-at-text-width = false # wrap at text-width instead of the full viewport size, default false
+# wrap-at-text-width = true
+
+[editor.lsp]
+enable = true
+display-messages = true # lsp progress msgs below statusline
+auto-signature-help = true # automatic popup of parameter hints
+display-inlay-hints = false # still being improved on, use space-i to toggle
+display-signature-help-docs = true # docs under signature help popup
+snippets = true # enable snippet completions, requires :lsp-restart
+goto-reference-include-declaration = true # include declaration in goto refs
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "block"
+
+[editor.file-picker]
+hidden = false # show hidden files
+
+[editor.statusline]
+left = [
+  "mode", "spinner", "diagnostics", "workspace-diagnostics", "file-name",
+  "file-modification-indicator", "version-control"
+]
+center = []
+right = ["selections", "position", "file-encoding", "file-line-ending", "file-type"]
 
 [editor.indent-guides]
-render = false
-character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽"
-skip-levels = 1
+render = true
+# skip-levels = 1
 
 [keys.normal]
-C-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
-C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
-C-q = ":quit"
 tab = ":buffer-next"
 S-tab = ":buffer-previous"
-X = ["extend_line_up", "extend_to_line_bounds"]
+X = ["extend_line_up", "extend_to_line_bounds"] # the reverse of x
 
 [keys.normal.space]
 i = ":toggle lsp.display-inlay-hints"
@@ -105,9 +88,3 @@ C-k = [
   'move_line_up',
   'replace_with_yanked',
 ]
-
-# Tmux 
-# [keys.normal.space.t]
-# l = ":pipe-to tmux split-window -v helix-live-grep"
-# B = ":pipe-to tmux split-window -v helix-git-blame"
-# H = ":sh helix-open-in-gh"
