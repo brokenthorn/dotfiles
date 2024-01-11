@@ -1,21 +1,17 @@
--- local on_attach = require("plugins.configs.lspconfig").on_attach
---local capabilities = require("plugins.configs.lspconfig").capabilities
--- local lspconfig = require("lspconfig")
--- local util = require("lspconfig/util")
+local on_attach = require("plugins.configs.lspconfig").on_attach
+local capabilities = require("plugins.configs.lspconfig").capabilities
 
--- Commented out b/c it conflicts with the simrat39/root-tools.nvim plugins
--- which I decided to use for now instead of this barebones rust-analyzer setup:
--- lspconfig.rust_analyzer.setup({
---   on_attach = on_attach,
---   capabilities = capabilities,
---   filetypes = {"rust"},
---   root_dir = util.root_pattern("Cargo.toml"),
---   settings = {
---     ['rust-analyzer'] = {
---       cargo = {
---         allFeatures = true,
---       }
---     }
---   }
--- })
+local lspconfig = require "lspconfig"
 
+-- if you just want default config for the servers then put them in a table
+local servers = { "html", "cssls", "tsserver", "clangd" }
+
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end
+
+-- 
+-- lspconfig.pyright.setup { blabla}

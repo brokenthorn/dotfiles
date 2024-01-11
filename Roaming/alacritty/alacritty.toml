@@ -1,69 +1,73 @@
-[font]
-size = 12.5
-
+# Set the font families:
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Regular"
+[font.italic]
+family = "FiraCode Nerd Font"
+style = "Regular Italic"
 [font.bold]
-family = "JetBrainsMono NF"
+family = "FiraCode Nerd Font"
 style = "Bold"
-
 [font.bold_italic]
-family = "JetBrainsMono NF"
+family = "FiraCode Nerd Font"
 style = "Bold Italic"
 
-[font.italic]
-family = "JetBrainsMono NF"
-style = "Italic"
-
-[font.normal]
-family = "JetBrainsMono NF"
-style = "Regular"
-
-[font.glyph_offset]
-x = 0
-y = 0
-
+# Set the font size and spacing:
+[font]
+size = 14
+# add spacing in glyph box:
 [font.offset]
-x = 0
-y = 0
+x = 0 # added to the right of each glyph
+y = 0 # added to the top of each glyph
+# recenter glyps in their box after adding spacing:
+[font.glyph_offset]
+x = 0 # added to the left of each glyph
+y = 0 # added to the bottom of each glyph
 
+# Set keybindings:
 [[keyboard.bindings]]
 action = "ResetFontSize"
 key = "Key0"
 mods = "Control"
-
 [[keyboard.bindings]]
 action = "IncreaseFontSize"
 key = "Equals"
 mods = "Control"
-
 [[keyboard.bindings]]
 action = "IncreaseFontSize"
 key = "Plus"
 mods = "Control"
-
 [[keyboard.bindings]]
 action = "DecreaseFontSize"
 key = "Minus"
 mods = "Control"
-
 [[keyboard.bindings]]
 action = "ToggleFullscreen"
 key = "F11"
 mods = "None"
 
+# Set mouse settings and bindings:
 [mouse]
 hide_when_typing = true
+[[mouse.bindings]]
+mods = "None"
+mouse = "Right"
+action = "Paste"
+
+[selection]
+save_to_clipboard = true
 
 [scrolling]
 history = 5000
 
 [shell]
-program = "pwsh.exe -NoLogo -WorkingDirectory ~"
+program = "ubuntu.exe"
 
 [window]
-decorations = "Full"
+# centers the content when window size not multiple of letter size:
 dynamic_padding = true
-opacity = 0.88
-
+decorations = "full"
+opacity = 0.8
 [window.padding]
 x = 0
 y = 0

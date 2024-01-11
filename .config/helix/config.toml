@@ -1,7 +1,7 @@
-theme = "ferra"
+theme = "dark_plus"
 
 [editor]
-mouse = true
+mouse = false
 undercurl = true
 true-color = true
 line-number = "relative"
@@ -46,7 +46,7 @@ right = ["selections", "position", "file-encoding", "file-line-ending", "file-ty
 
 [editor.indent-guides]
 render = true
-skip-levels = 1
+skip-levels = 0
 
 [keys.normal]
 tab = ":buffer-next"
