@@ -14,22 +14,23 @@ local options = {
   formatters_by_ft = {
     lua = { "stylua" },
 
-    -- Confirm will run multiple formatters sequentially
+    -- Confirm will run multiple formatters sequentially.
+    -- Use a sublist to run only the first available formatter.
     javascript = { { "prettierd", "prettier" }, { "eslint_d", "eslint" } },
     typescrypt = { { "prettierd", "prettier" }, { "eslint_d", "eslint" } },
-
-    -- Use a sublist to run only the first available formatter
-    -- javascript = { { "prettierd", "prettier" } }
 
     css = { "prettier" },
     html = { "prettier" },
 
     sh = { "shfmt" },
     markdown = { "markdownlint" },
+
+    rust = { "rustfmt" },
   },
 
-  -- adding same formatter for multiple filetypes can look too much work for some
-  -- instead of the above code you could just use a loop! the config is just a table after all!
+  -- adding same formatter for multiple filetypes can look too much work for some.
+  -- instead of the above code you could just use a loop!
+  -- the config is just a table after all!
 
   format_on_save = function(bufnr)
     -- Disable autoformatting on certain filetypes
@@ -45,7 +46,7 @@ local options = {
 
     -- Disable autoformat on certain paths
     local bufname = vim.api.nvim_buf_get_name(bufnr)
-    if bufname:match("/node_modules/") then
+    if bufname:match "/node_modules/" then
       return
     end
 

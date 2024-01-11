@@ -2,16 +2,15 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
-
-  -- override plugin configs
+  -- Override some default plugin configs
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason,
+    opts = overrides.mason, -- mainly to ensure some plugins are installed
   },
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = overrides.treesitter,
+    opts = overrides.treesitter, -- mainly to ensure some languages are installed
   },
 
   {
@@ -19,7 +18,17 @@ local plugins = {
     opts = overrides.nvimtree,
   },
 
-  -- Install a plugin
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      -- load nvchad default config
+      require "plugins.configs.lspconfig"
+      -- apply custom config over the defaults
+      require "custom.configs.lspconfig"
+    end,
+  },
+
+  -- Install custom plugins
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -28,6 +37,8 @@ local plugins = {
     end,
   },
 
+  -- Conform takes care of all aspects of pretty formatting code
+  -- for multiple language:
   {
     "stevearc/conform.nvim",
     --  for users those who want auto-save conform + lazyloading!
@@ -37,20 +48,19 @@ local plugins = {
     end,
   },
 
-  {
-    "rust-lang/rust.vim",
-    ft = "rust",
-    init = function()
-      vim.g.rustfmt_autosave = 1
-    end,
-  },
-
+  -- Helps managing Rust crates.io dependencies:
   {
     "saecki/crates.nvim",
     ft = { "rust", "toml" },
+    tag = "stable",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function(_, opts)
       local crates = require "crates"
       crates.setup(opts)
+      -- add it to cmp completions:
+      require("cmp").setup.buffer {
+        sources = { { name = "crates" } },
+      }
       crates.show()
     end,
   },
