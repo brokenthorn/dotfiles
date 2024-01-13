@@ -18,12 +18,19 @@ local plugins = {
     opts = overrides.nvimtree,
   },
 
+  -- Mainly to disable the annoying preselection that autocompletes
+  -- when pressing Space.
+  {
+    "hrsh7th/nvim-cmp",
+    opts = overrides.cmp,
+  },
+
   {
     "neovim/nvim-lspconfig",
     config = function()
-      -- load nvchad default config
+      -- apply nvchad default config and plugin setup:
       require "plugins.configs.lspconfig"
-      -- apply custom config over the defaults
+      -- apply our custom config and setup after that:
       require "custom.configs.lspconfig"
     end,
   },

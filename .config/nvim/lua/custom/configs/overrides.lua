@@ -58,4 +58,15 @@ M.nvimtree = {
   },
 }
 
+M.cmp = {
+  completion = {
+    -- compared to default, this adds noselect so that PreselectMode
+    -- gets set to None, to disable annoying autocomplete and having
+    -- to press C-e to cancel suggestion.
+    completeopt = "menu,menuone,noselect",
+    -- Some LSPs though don't listen to the opts above, so:
+    preselect = (require "cmp").PreselectMode.None,
+  },
+}
+
 return M
