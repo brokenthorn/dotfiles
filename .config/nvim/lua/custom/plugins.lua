@@ -1,41 +1,38 @@
 local overrides = require "custom.configs.overrides"
 
+-- This list defines plugins that should be installed,
+-- or if they are already installed with nvchad, overrides configs.
+
 ---@type NvPluginSpec[]
 local plugins = {
-  -- Override some default plugin configs
+  -- Ensure some packages and some treesitter languages are installe:
   {
     "williamboman/mason.nvim",
     opts = overrides.mason, -- mainly to ensure some plugins are installed
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = overrides.treesitter, -- mainly to ensure some languages are installed
   },
 
+  -- Config overrides:
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.configs.lspconfig"
+    end,
+  },
   {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
   },
-
-  -- Mainly to disable the annoying preselection that autocompletes
-  -- when pressing Space.
   {
     "hrsh7th/nvim-cmp",
     opts = overrides.cmp,
   },
 
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      -- apply nvchad default config and plugin setup:
-      require "plugins.configs.lspconfig"
-      -- apply our custom config and setup after that:
-      require "custom.configs.lspconfig"
-    end,
-  },
-
-  -- Install custom plugins
+  -- Install additional custom plugins:
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -43,9 +40,7 @@ local plugins = {
       require("better_escape").setup()
     end,
   },
-
-  -- Conform takes care of all aspects of pretty formatting code
-  -- for multiple language:
+  -- Conform does code formatting for multiple language:
   {
     "stevearc/conform.nvim",
     --  for users those who want auto-save conform + lazyloading!
@@ -54,7 +49,6 @@ local plugins = {
       require "custom.configs.conform"
     end,
   },
-
   -- Helps managing Rust crates.io dependencies:
   {
     "saecki/crates.nvim",

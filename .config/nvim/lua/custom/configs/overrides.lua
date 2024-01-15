@@ -1,3 +1,5 @@
+local cmp = require "cmp"
+
 local M = {}
 
 M.treesitter = {
@@ -23,21 +25,25 @@ M.treesitter = {
 }
 
 M.mason = {
+  -- Package registry: https://mason-registry.dev/registry/list
   ensure_installed = {
-    -- lua stuff
+    -- Lua stuff:
     "lua-language-server",
     "stylua",
 
-    -- web dev stuff
+    -- Web dev stuff:
     "css-lsp",
     "html-lsp",
+    "emmet-language-server",
+    "tailwindcss-language-server",
     "typescript-language-server",
-    "deno",
+    -- "deno",
     "prettier",
     "prettierd",
     "eslint_d",
+    "eslint-lsp",
 
-    -- Rust stuff
+    -- Rust stuff:
     "rust-analyzer",
   },
 }
@@ -65,7 +71,7 @@ M.cmp = {
     -- to press C-e to cancel suggestion.
     completeopt = "menu,menuone,noselect",
     -- Some LSPs though don't listen to the opts above, so:
-    preselect = (require "cmp").PreselectMode.None,
+    preselect = cmp.PreselectMode.None,
   },
 }
 

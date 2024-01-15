@@ -1,10 +1,10 @@
 # Set the font families:
 [font.normal]
 family = "FiraCode Nerd Font"
-style = "Regular"
+style = "Retina"
 [font.italic]
 family = "FiraCode Nerd Font"
-style = "Regular Italic"
+style = "Retina Italic"
 [font.bold]
 family = "FiraCode Nerd Font"
 style = "Bold"
@@ -14,7 +14,7 @@ style = "Bold Italic"
 
 # Set the font size and spacing:
 [font]
-size = 14
+size = 13
 # add spacing in glyph box:
 [font.offset]
 x = 0 # added to the right of each glyph
@@ -67,7 +67,7 @@ program = "ubuntu.exe"
 # centers the content when window size not multiple of letter size:
 dynamic_padding = true
 decorations = "full"
-opacity = 0.8
+opacity = 0.9
 [window.padding]
 x = 0
 y = 0
