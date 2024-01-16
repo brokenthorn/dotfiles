@@ -18,8 +18,8 @@ local options = {
     -- Use a sublist to run only the first available formatter.
     javascript = { { "prettierd", "prettier" }, { "eslint_d", "eslint" } },
     javascriptreact = { { "prettierd", "prettier" }, { "eslint_d", "eslint" } },
-    typescrypt = { { "prettierd", "prettier" }, { "eslint_d", "eslint" } },
-    typescryptreact = { { "prettierd", "prettier" }, { "eslint_d", "eslint" } },
+    typescript = { { "prettierd", "prettier" }, { "eslint_d", "eslint" } },
+    typescriptreact = { { "prettierd", "prettier" }, { "eslint_d", "eslint" } },
 
     css = { "prettier" },
     html = { "prettier" },

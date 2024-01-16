@@ -1,21 +1,59 @@
-local overrides = require "custom.configs.overrides"
-
 -- This list defines plugins that should be installed,
 -- or if they are already installed with nvchad, overrides configs.
 
 ---@type NvPluginSpec[]
 local plugins = {
-  -- Ensure some packages and some treesitter languages are installe:
+  -- These plugins come with NvChad, and I only need to override some configs:
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason, -- mainly to ensure some plugins are installed
+    opts = {
+      -- Package registry: https://mason-registry.dev/registry/list
+      ensure_installed = {
+        -- Lua stuff:
+        "lua-language-server",
+        "stylua",
+
+        -- Web dev stuff:
+        "css-lsp",
+        "html-lsp",
+        "emmet-language-server",
+        "tailwindcss-language-server",
+        "typescript-language-server",
+        -- "deno",
+        "prettier",
+        "prettierd",
+        "eslint_d",
+        "eslint-lsp",
+
+        -- Rust stuff:
+        "rust-analyzer",
+      },
+    },
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = overrides.treesitter, -- mainly to ensure some languages are installed
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "html",
+        "css",
+        "javascript",
+        "typescript",
+        "tsx",
+        "c",
+        "markdown",
+        "markdown_inline",
+        "rust",
+      },
+      indent = {
+        enable = true,
+        -- disable = {
+        --   "python"
+        -- },
+      },
+    },
   },
-
-  -- Config overrides:
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -25,21 +63,29 @@ local plugins = {
   },
   {
     "nvim-tree/nvim-tree.lua",
-    opts = overrides.nvimtree,
+    opts = {
+      git = {
+        enable = true,
+      },
+      renderer = {
+        highlight_git = true,
+        icons = {
+          show = {
+            git = true,
+          },
+        },
+      },
+    },
   },
   {
     "hrsh7th/nvim-cmp",
-    opts = overrides.cmp,
+    opts = {
+      autocomplete = false,
+    }
   },
 
-  -- Install additional custom plugins:
-  {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("better_escape").setup()
-    end,
-  },
+  -- Add additional plugins that don't come with NvChad:
+
   -- Conform does code formatting for multiple language:
   {
     "stevearc/conform.nvim",
@@ -49,7 +95,8 @@ local plugins = {
       require "custom.configs.conform"
     end,
   },
-  -- Helps managing Rust crates.io dependencies:
+
+  -- Crates helps manage Rust crates.io dependencies:
   {
     "saecki/crates.nvim",
     ft = { "rust", "toml" },
@@ -73,8 +120,10 @@ local plugins = {
   -- },
 
   -- All NvChad plugins are lazy-loaded by default
-  -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
+  -- For a plugin to be loaded, you will need to set either
+  -- `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
+  -- If you want a plugin to load on startup,
+  -- add `lazy = false` to a plugin spec, for example:
   -- {
   --   "mg979/vim-visual-multi",
   --   lazy = false,
