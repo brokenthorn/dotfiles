@@ -1,9 +1,6 @@
 -- This list defines plugins that should be installed,
 -- or if they are already installed with nvchad, overrides configs.
 
-local cmp = require "cmp"
-local cmpTypes = require "cmp.types"
-
 ---@type NvPluginSpec[]
 local plugins = {
   -- These plugins come with NvChad, and I only need to override some configs:
@@ -81,23 +78,28 @@ local plugins = {
 
   {
     "hrsh7th/nvim-cmp",
-    opts = {
-      mapping = {
-        ["<CR>"] = cmp.mapping.confirm {
-          behavior = cmp.ConfirmBehavior.Insert,
-          -- when true, auto-selects the first item if nothing was selected,
-          -- making noselect below not take effect.
-          select = false,
-        },
-      },
-      -- adding noselect compared to default, to prevent autocomplete when typing,
-      -- and this is actually nvim-cmp defaults, but NvChad overrides this.
-      completion = {
+    opts = function()
+      -- load the default config:
+      local config = require "plugins.configs.cmp"
+
+      -- add our custom config overrides to the above default config:
+      local cmp = require "cmp"
+
+      -- the default has select = true, I do not want that
+      config.mapping["<CR>"] = cmp.mapping.confirm {
+        behavior = cmp.ConfirmBehavior.Insert,
+        select = false,
+      }
+
+      config.completion = {
         completeopt = "menu,menuone,noselect",
-      },
-      -- this overrides LSPs that specify this feature and enable preselection:
-      preselect = cmp.PreselectMode.None,
-    },
+      }
+
+      config.preselect = cmp.PreselectMode.None
+
+      -- return the final merged config:
+      return config
+    end,
   },
 
   -- Add additional plugins that don't come with NvChad:
@@ -105,10 +107,12 @@ local plugins = {
   -- Conform does code formatting for multiple language:
   {
     "stevearc/conform.nvim",
-    --  for users those who want auto-save conform + lazyloading!
+    -- lazyloading when format on save is triggered:
     event = "BufWritePre",
     config = function()
-      require "custom.configs.conform"
+      local config = require "custom.configs.conform"
+      local conform = require "conform"
+      conform.setup(config)
     end,
   },
 
