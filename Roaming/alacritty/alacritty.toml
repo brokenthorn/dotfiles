@@ -1,30 +1,28 @@
-# Set the font families:
-[font.normal]
-family = "FiraCode Nerd Font"
-style = "Retina"
-[font.italic]
-family = "FiraCode Nerd Font"
-style = "Retina Italic"
-[font.bold]
-family = "FiraCode Nerd Font"
-style = "Bold"
-[font.bold_italic]
-family = "FiraCode Nerd Font"
-style = "Bold Italic"
+# Font
+#######################################
 
-# Set the font size and spacing:
 [font]
 size = 13
-# add spacing in glyph box:
-[font.offset]
-x = 0 # added to the right of each glyph
-y = 0 # added to the top of each glyph
-# recenter glyps in their box after adding spacing:
-[font.glyph_offset]
-x = 0 # added to the left of each glyph
-y = 0 # added to the bottom of each glyph
 
-# Set keybindings:
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Regular"
+
+[font.italic]
+family = "FiraCode Nerd Font"
+style = "Regular Italic"
+
+[font.bold]
+family = "FiraCode Nerd Font"
+style = "Medium"
+
+[font.bold_italic]
+family = "FiraCode Nerd Font"
+style = "Medium Italic"
+
+# Keybindings
+#######################################
+
 [[keyboard.bindings]]
 action = "ResetFontSize"
 key = "Key0"
@@ -46,9 +44,12 @@ action = "ToggleFullscreen"
 key = "F11"
 mods = "None"
 
-# Set mouse settings and bindings:
+# Mouse
+#######################################
+
 [mouse]
 hide_when_typing = true
+
 [[mouse.bindings]]
 mods = "None"
 mouse = "Right"
@@ -57,6 +58,9 @@ action = "Paste"
 [selection]
 save_to_clipboard = true
 
+# Other
+#######################################
+
 [scrolling]
 history = 5000
 
@@ -64,10 +68,7 @@ history = 5000
 program = "ubuntu.exe"
 
 [window]
-# centers the content when window size not multiple of letter size:
+# centers padding area:
 dynamic_padding = true
 decorations = "full"
-opacity = 0.9
-[window.padding]
-x = 0
-y = 0
+opacity = 0.85
