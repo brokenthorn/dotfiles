@@ -13,11 +13,12 @@ M.general = {
     ["<leader>fd"] = {
       function()
         vim.g.disable_autoformat = not vim.g.disable_autoformat
-        vim.notify(vim.g.disable_autoformat and "Autoformat disabled" or "Autoformat enabled")
+        vim.notify(vim.g.disable_autoformat and "Format on save disabled" or "Format on save enabled")
       end,
-      "Toggle autoformat",
+      "Toggle format on save",
     },
   },
+
   v = {
     [">"] = { ">gv", "indent" },
   },

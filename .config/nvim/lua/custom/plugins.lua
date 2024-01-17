@@ -1,6 +1,9 @@
 -- This list defines plugins that should be installed,
 -- or if they are already installed with nvchad, overrides configs.
 
+local cmp = require "cmp"
+local cmpTypes = require "cmp.types"
+
 ---@type NvPluginSpec[]
 local plugins = {
   -- These plugins come with NvChad, and I only need to override some configs:
@@ -9,42 +12,38 @@ local plugins = {
     opts = {
       -- Package registry: https://mason-registry.dev/registry/list
       ensure_installed = {
-        -- Lua stuff:
-        "lua-language-server",
-        "stylua",
-
-        -- Web dev stuff:
         "css-lsp",
-        "html-lsp",
         "emmet-language-server",
+        "eslint-lsp",
+        "eslint_d",
+        "html-lsp",
+        "lua-language-server",
+        "prettier",
+        "prettierd",
+        "rust-analyzer",
+        "stylua",
         "tailwindcss-language-server",
         "typescript-language-server",
         -- "deno",
-        "prettier",
-        "prettierd",
-        "eslint_d",
-        "eslint-lsp",
-
-        -- Rust stuff:
-        "rust-analyzer",
       },
     },
   },
+
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "vim",
-        "lua",
-        "html",
-        "css",
-        "javascript",
-        "typescript",
-        "tsx",
         "c",
+        "css",
+        "html",
+        "javascript",
+        "lua",
         "markdown",
         "markdown_inline",
         "rust",
+        "tsx",
+        "typescript",
+        "vim",
       },
       indent = {
         enable = true,
@@ -54,6 +53,7 @@ local plugins = {
       },
     },
   },
+
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -61,6 +61,7 @@ local plugins = {
       require "custom.configs.lspconfig"
     end,
   },
+
   {
     "nvim-tree/nvim-tree.lua",
     opts = {
@@ -77,11 +78,26 @@ local plugins = {
       },
     },
   },
+
   {
     "hrsh7th/nvim-cmp",
     opts = {
-      autocomplete = false,
-    }
+      mapping = {
+        ["<CR>"] = cmp.mapping.confirm {
+          behavior = cmp.ConfirmBehavior.Insert,
+          -- when true, auto-selects the first item if nothing was selected,
+          -- making noselect below not take effect.
+          select = false,
+        },
+      },
+      -- adding noselect compared to default, to prevent autocomplete when typing,
+      -- and this is actually nvim-cmp defaults, but NvChad overrides this.
+      completion = {
+        completeopt = "menu,menuone,noselect",
+      },
+      -- this overrides LSPs that specify this feature and enable preselection:
+      preselect = cmp.PreselectMode.None,
+    },
   },
 
   -- Add additional plugins that don't come with NvChad:
