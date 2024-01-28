@@ -10,7 +10,7 @@ M.general = {
       "Format code",
     },
 
-    ["<leader>fd"] = {
+    ["<leader>ft"] = {
       function()
         vim.g.disable_autoformat = not vim.g.disable_autoformat
         vim.notify(vim.g.disable_autoformat and "Format on save disabled" or "Format on save enabled")

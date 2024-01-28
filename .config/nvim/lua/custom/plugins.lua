@@ -29,6 +29,9 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
+      autotag = {
+        enable = true,
+      },
       ensure_installed = {
         "c",
         "css",
@@ -49,6 +52,37 @@ local plugins = {
         -- },
       },
     },
+  },
+
+  {
+    "windwp/nvim-ts-autotag",
+    ft = {
+      "html",
+      "javascript",
+      "typescript",
+      "javascriptreact",
+      "typescriptreact",
+      "svelte",
+      "vue",
+      "tsx",
+      "jsx",
+      "rescript",
+      "xml",
+      "php",
+      "markdown",
+      "astro",
+      "glimmer",
+      "handlebars",
+      "hbs",
+    },
+    -- opts = {
+    --   autotag = {
+    --     enable = true,
+    --     enable_rename = true,
+    --     enable_close = true,
+    --     enable_close_on_slash = true,
+    --   },
+    -- },
   },
 
   {
@@ -109,10 +143,10 @@ local plugins = {
     "stevearc/conform.nvim",
     -- lazyloading when format on save is triggered:
     event = "BufWritePre",
-    config = function()
+    opts = function()
       local config = require "custom.configs.conform"
-      local conform = require "conform"
-      conform.setup(config)
+      -- local conform = require "conform"
+      return config
     end,
   },
 
@@ -131,6 +165,11 @@ local plugins = {
       }
       crates.show()
     end,
+  },
+
+  {
+    "justinmk/vim-sneak",
+    lazy = false,
   },
 
   -- To make a plugin not be loaded
