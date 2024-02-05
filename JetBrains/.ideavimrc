@@ -1,0 +1,79 @@
+let mapleader=" "
+
+set clipboard+=unnamed " Use the system clipboard by default
+set history=1000 " Keep a history of the last 1000 commands
+set hlsearch " Highlight search results as you type
+set idearefactormode=keep " Keep the current mode when refactoring
+set ignorecase smartcase " Ignore case in search, unless an uppercase letter is used
+set incsearch " Incremental search - show matches as you type
+set relativenumber " Display line numbers relative to the cursor position
+set scrolloff=15 " Keep at least 15 lines above and below the cursor during scrolling
+set showcmd " Show command being entered
+set showmode " Show current mode (insert, visual, etc.) in the status line
+set timeoutlen=500 " Time to wait (in milliseconds) before considering a mapped key as not part of a sequence
+set visualbell " Use visual bell instead of an audible bell for notifications
+set which-key " Show available keybindings after a short delay
+
+""" Enable built-in IDEAVim plugins ---------
+Plug 'machakann/vim-highlightedyank'
+" https://github.com/tpope/vim-surround/blob/master/doc/surround.txt
+" Enable dealing with pairs of surroundings with all normal vim commands,
+" and works with HTML tags as well.
+Plug 'tpope/vim-surround'
+" Enable multiple cursors.
+" https://github.com/terryma/vim-multiple-cursors/blob/master/doc/multiple_cursors.txt
+Plug 'terryma/vim-multiple-cursors'
+" Emulates NERDTree using the built-in project view, making navigation and
+" file management from the project view easier.
+" Available commands in NERDTree: https://raw.githubusercontent.com/wiki/JetBrains/ideavim/NERDTree-support.md
+" Tip: use m to open the menu while in NERDTree
+Plug 'preservim/nerdtree'
+" After block yank and paste, move cursor to the end of operated text and
+" don't override register:
+" disabled for now because it makes copilot trigger in normal mode, which is not allowed.
+"vnoremap p "_dP`]
+"nnoremap p p`]
+
+" Easy tab navigation using TAB and Shift-TAB:
+nnoremap <tab> gt
+nnoremap <S-tab> gT
+
+""" Mappings --------------------------------
+" WARN: Don't remap Ctrl+; as that is used by AceJump,
+" unless you remap it.
+
+" Refactorings and other code actions:
+" ShowHoverInfo is mapped to <leader>k by default
+" Ctrl-W plus S or V add horizontal and vertical splits by default
+" Ctrl-W plus H, J, K, L to move between splits comes by default
+inoremap <C-s> <Esc>:wa<CR>
+nnoremap <C-s> :wa<CR>
+
+nmap F <Action>(AceTargetAction)
+nmap ff <Action>(AceAction)
+nmap fl <Action>(AceLineAction)
+nmap g( <Action>(GotoPrevElementUnderCaretUsage)
+nmap g) <Action>(GotoNextElementUnderCaretUsage)
+nmap g[d <Action>(GotoPreviousError)
+nmap g]d <Action>(GotoNextError)
+
+nmap <leader>cb <Action>(CommentByBlockComment)
+nmap <leader>cc <Action>(CommentByLineComment)
+vmap <leader>cb <Action>(CommentByBlockComment)
+vmap <leader>cc <Action>(CommentByLineComment)
+
+nmap <leader>e :NERDTreeFocus<CR> " also, Esc goes back to file, q closes
+nmap <leader>ee <Action>(ShowErrorDescription)
+nmap <leader>ff <Action>(GotoFile)
+nmap <leader>fu <Action>(FindUsages)
+nmap <leader>hh <Action>(QuickImplementations)
+nmap <leader>hu <Action>(HighlightUsagesInFile)
+nmap <leader>oi <Action>(OptimizeImports)
+nmap <leader>ra <Action>(RenameElement)
+nmap <leader>rl <Action>(RecentLocations)
+nmap <leader>rr <Action>(Refactorings.QuickListPopupAction)
+nmap <leader>s <Action>(FileStructurePopup)
+nmap <leader>x <Action>(CloseEditor)
+nnoremap <leader><cr> :nohlsearch<cr>
+vmap <leader>sw <Action>(SurroundWith)
+
