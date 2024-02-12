@@ -1,6 +1,6 @@
 let mapleader=" "
 
-set clipboard+=unnamed " Use the system clipboard by default
+set clipboard+=unnamed,ideaput " Use the system clipboard by default
 set history=1000 " Keep a history of the last 1000 commands
 set hlsearch " Highlight search results as you type
 set idearefactormode=keep " Keep the current mode when refactoring
@@ -8,6 +8,7 @@ set ignorecase smartcase " Ignore case in search, unless an uppercase letter is 
 set incsearch " Incremental search - show matches as you type
 set relativenumber " Display line numbers relative to the cursor position
 set scrolloff=15 " Keep at least 15 lines above and below the cursor during scrolling
+set sidescrolloff=5
 set showcmd " Show command being entered
 set showmode " Show current mode (insert, visual, etc.) in the status line
 set notimeout
@@ -42,10 +43,15 @@ Plug "tpope/vim-surround"
 " Tip: use m to open the menu while in NERDTree
 Plug "preservim/nerdtree"
 
-" After block yank and paste, move cursor to the end of operated text and don"t
+" After block yank and paste, move cursor to the end of operated text and don't
 " override register:
 vnoremap p "_dP`]
 nnoremap p p`]
+" Keep selection when/after indenting in visual mode:
+vnoremap < <gv
+vnoremap > >gv
+vnoremap = =gv
+
 
 " Easy tab navigation using TAB and Shift-TAB:
 nnoremap <tab> gt
@@ -70,6 +76,16 @@ nmap g( <Action>(GotoPrevElementUnderCaretUsage)
 nmap g) <Action>(GotoNextElementUnderCaretUsage)
 nmap g[d <Action>(GotoPreviousError)
 nmap g]d <Action>(GotoNextError)
+nmap g[m <Action>(MethodUp)
+nmap g]m <Action>(MethodDown)
+nmap g[c <Action>(GotoPreviousChange)
+nmap g]c <Action>(GotoNextChange)
+nmap gt <Action>(GotoTest)
+nmap gs <Action>(GotoSuperMethod)
+nmap gi <Action>(GotoImplementation)
+nmap gd <Action>(GotoDeclaration)
+nmap gr <Action>(GotoRelatedSymbol)
+nmap gu <Action>(FindUsages)
 
 nmap <leader>cb <Action>(CommentByBlockComment)
 nmap <leader>cc <Action>(CommentByLineComment)
@@ -79,14 +95,17 @@ vmap <leader>cc <Action>(CommentByLineComment)
 nmap <leader>e :NERDTreeFocus<CR> " also, Esc goes back to file, q closes
 nmap <leader>ee <Action>(ShowErrorDescription)
 nmap <leader>ff <Action>(GotoFile)
-nmap <leader>fu <Action>(FindUsages)
+nmap <leader>fs <Action>(FileStructurePopup)
+nmap <leader>fw <Action>(FindInPath) " search in all files in workspace
+nmap <leader>fm <Action>(ReformatCode)
+
 nmap <leader>hh <Action>(QuickImplementations)
 nmap <leader>hu <Action>(HighlightUsagesInFile)
 nmap <leader>oi <Action>(OptimizeImports)
 nmap <leader>ra <Action>(RenameElement)
 nmap <leader>rl <Action>(RecentLocations)
 nmap <leader>rr <Action>(Refactorings.QuickListPopupAction)
-nmap <leader>s <Action>(FileStructurePopup)
+
 nmap <leader>x <Action>(CloseEditor)
 nnoremap <leader><cr> :nohlsearch<cr>
 vmap <leader>sw <Action>(SurroundWith)
