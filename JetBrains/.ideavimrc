@@ -11,8 +11,8 @@ set scrolloff=15 " Keep at least 15 lines above and below the cursor during scro
 set sidescrolloff=5
 set showcmd " Show command being entered
 set showmode " Show current mode (insert, visual, etc.) in the status line
-set notimeout
-"set timeoutlen=500 " Time to wait (in milliseconds) before considering a mapped key as not part of a sequence
+"set notimeout
+set timeoutlen=1000 " Time to wait (in milliseconds) before considering a mapped key as not part of a sequence
 set visualbell " Use visual bell instead of an audible bell for notifications
 set which-key " Show available keybindings after a short delay
 
@@ -51,7 +51,8 @@ nnoremap p p`]
 vnoremap < <gv
 vnoremap > >gv
 vnoremap = =gv
-
+" IDEA's built-in search is simply better:
+nmap / <Action>(Find)
 
 " Easy tab navigation using TAB and Shift-TAB:
 nnoremap <tab> gt
@@ -60,7 +61,7 @@ nnoremap <S-tab> gT
 """ Mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " WARN: Don"t remap Ctrl+; as that is used by AceJump,
-" unless you remap it.
+" unless you remap it, see below.
 
 " ShowHoverInfo is mapped to <leader>k by default
 
@@ -69,8 +70,12 @@ nnoremap <S-tab> gT
 inoremap <C-s> <Esc>:wa<CR>
 nnoremap <C-s> :wa<CR>
 
+" Press TAB or Shift TAB while Ace is active to scroll screen to see all matches
+" activates Ace Target Mode, selects entire word
 nmap F <Action>(AceTargetAction)
+" activates Ace
 nmap ff <Action>(AceAction)
+" activates Ace Line Mode
 nmap fl <Action>(AceLineAction)
 nmap g( <Action>(GotoPrevElementUnderCaretUsage)
 nmap g) <Action>(GotoNextElementUnderCaretUsage)
@@ -80,11 +85,11 @@ nmap g[m <Action>(MethodUp)
 nmap g]m <Action>(MethodDown)
 nmap g[c <Action>(GotoPreviousChange)
 nmap g]c <Action>(GotoNextChange)
-nmap gt <Action>(GotoTest)
-nmap gs <Action>(GotoSuperMethod)
-nmap gi <Action>(GotoImplementation)
 nmap gd <Action>(GotoDeclaration)
+nmap gi <Action>(GotoImplementation)
 nmap gr <Action>(GotoRelatedSymbol)
+nmap gs <Action>(GotoSuperMethod)
+nmap gt <Action>(GotoTest)
 nmap gu <Action>(FindUsages)
 
 nmap <leader>cb <Action>(CommentByBlockComment)
@@ -109,4 +114,3 @@ nmap <leader>rr <Action>(Refactorings.QuickListPopupAction)
 nmap <leader>x <Action>(CloseEditor)
 nnoremap <leader><cr> :nohlsearch<cr>
 vmap <leader>sw <Action>(SurroundWith)
-
