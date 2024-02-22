@@ -7,8 +7,8 @@ set idearefactormode=keep " Keep the current mode when refactoring
 set ignorecase smartcase " Ignore case in search, unless an uppercase letter is used
 set incsearch " Incremental search - show matches as you type
 set relativenumber " Display line numbers relative to the cursor position
-set scrolloff=15 " Keep at least 15 lines above and below the cursor during scrolling
-set sidescrolloff=5
+set scrolloff=1 " Keep at least 1 lines above and below the cursor during scrolling
+set sidescrolloff=1
 set showcmd " Show command being entered
 set showmode " Show current mode (insert, visual, etc.) in the status line
 "set notimeout
@@ -97,11 +97,11 @@ nmap <leader>cc <Action>(CommentByLineComment)
 vmap <leader>cb <Action>(CommentByBlockComment)
 vmap <leader>cc <Action>(CommentByLineComment)
 
-nmap <leader>e :NERDTreeFocus<CR> " also, Esc goes back to file, q closes
+nmap <leader>e :NERDTreeFocus<CR>
 nmap <leader>ee <Action>(ShowErrorDescription)
 nmap <leader>ff <Action>(GotoFile)
 nmap <leader>fs <Action>(FileStructurePopup)
-nmap <leader>fw <Action>(FindInPath) " search in all files in workspace
+nmap <leader>fw <Action>(FindInPath)
 nmap <leader>fm <Action>(ReformatCode)
 
 nmap <leader>hh <Action>(QuickImplementations)
@@ -110,6 +110,9 @@ nmap <leader>oi <Action>(OptimizeImports)
 nmap <leader>ra <Action>(RenameElement)
 nmap <leader>rl <Action>(RecentLocations)
 nmap <leader>rr <Action>(Refactorings.QuickListPopupAction)
+
+vmap <leader>ww <Action>(com.andrewbrookins.idea.wrap.WrapAction)
+nmap <leader>ww <Action>(com.andrewbrookins.idea.wrap.WrapParagraphAction)
 
 nmap <leader>x <Action>(CloseEditor)
 nnoremap <leader><cr> :nohlsearch<cr>
