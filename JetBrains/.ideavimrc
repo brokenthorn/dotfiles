@@ -1,18 +1,17 @@
 let mapleader=" "
 
-set clipboard+=unnamed,ideaput " Use the system clipboard by default
+set clipboard+=unnamed " Use the system clipboard by default
 set history=1000 " Keep a history of the last 1000 commands
 set hlsearch " Highlight search results as you type
 set idearefactormode=keep " Keep the current mode when refactoring
 set ignorecase smartcase " Ignore case in search, unless an uppercase letter is used
 set incsearch " Incremental search - show matches as you type
 set relativenumber " Display line numbers relative to the cursor position
-set scrolloff=1 " Keep at least 1 lines above and below the cursor during scrolling
-set sidescrolloff=1
+set scrolloff=15 " Keep at least 15 lines above and below the cursor during scrolling
 set showcmd " Show command being entered
 set showmode " Show current mode (insert, visual, etc.) in the status line
-"set notimeout
-set timeoutlen=1000 " Time to wait (in milliseconds) before considering a mapped key as not part of a sequence
+set notimeout
+"set timeoutlen=500 " Time to wait (in milliseconds) before considering a mapped key as not part of a sequence
 set visualbell " Use visual bell instead of an audible bell for notifications
 set which-key " Show available keybindings after a short delay
 
@@ -43,7 +42,7 @@ Plug "tpope/vim-surround"
 " Tip: use m to open the menu while in NERDTree
 Plug "preservim/nerdtree"
 
-" After block yank and paste, move cursor to the end of operated text and don't
+" After block yank and paste, move cursor to the end of operated text and don"t
 " override register:
 vnoremap p "_dP`]
 nnoremap p p`]
@@ -61,7 +60,7 @@ nnoremap <S-tab> gT
 """ Mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " WARN: Don"t remap Ctrl+; as that is used by AceJump,
-" unless you remap it, see below.
+" unless you remap it.
 
 " ShowHoverInfo is mapped to <leader>k by default
 
@@ -117,3 +116,4 @@ nmap <leader>ww <Action>(com.andrewbrookins.idea.wrap.WrapParagraphAction)
 nmap <leader>x <Action>(CloseEditor)
 nnoremap <leader><cr> :nohlsearch<cr>
 vmap <leader>sw <Action>(SurroundWith)
+
