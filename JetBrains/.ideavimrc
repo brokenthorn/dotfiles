@@ -7,11 +7,12 @@ set idearefactormode=keep " Keep the current mode when refactoring
 set ignorecase smartcase " Ignore case in search, unless an uppercase letter is used
 set incsearch " Incremental search - show matches as you type
 set relativenumber " Display line numbers relative to the cursor position
-set scrolloff=15 " Keep at least 15 lines above and below the cursor during scrolling
+set scrolloff=4 " Keep at least 1 lines above and below the cursor during scrolling
+set sidescrolloff=4
 set showcmd " Show command being entered
 set showmode " Show current mode (insert, visual, etc.) in the status line
-set notimeout
-"set timeoutlen=500 " Time to wait (in milliseconds) before considering a mapped key as not part of a sequence
+"set notimeout
+set timeoutlen=500 " Time to wait (in milliseconds) before considering a mapped key as not part of a sequence
 set visualbell " Use visual bell instead of an audible bell for notifications
 set which-key " Show available keybindings after a short delay
 
@@ -42,7 +43,7 @@ Plug "tpope/vim-surround"
 " Tip: use m to open the menu while in NERDTree
 Plug "preservim/nerdtree"
 
-" After block yank and paste, move cursor to the end of operated text and don"t
+" After block yank and paste, move cursor to the end of operated text and don't
 " override register:
 vnoremap p "_dP`]
 nnoremap p p`]
@@ -60,7 +61,7 @@ nnoremap <S-tab> gT
 """ Mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " WARN: Don"t remap Ctrl+; as that is used by AceJump,
-" unless you remap it.
+" unless you remap it, see below.
 
 " ShowHoverInfo is mapped to <leader>k by default
 
