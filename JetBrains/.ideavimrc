@@ -69,37 +69,45 @@ nnoremap <S-tab> gT
 inoremap <C-s> <Esc>:wa<CR>
 nnoremap <C-s> :wa<CR>
 
-" Press TAB or Shift TAB while Ace is active to scroll screen to see all matches
-" activates Ace Target Mode, selects entire word
-nmap F <Action>(AceTargetAction)
-" activates Ace
-nmap ff <Action>(AceAction)
-" activates Ace Line Mode
-nmap fl <Action>(AceLineAction)
 nmap g( <Action>(GotoPrevElementUnderCaretUsage)
 nmap g) <Action>(GotoNextElementUnderCaretUsage)
+
 nmap g[d <Action>(GotoPreviousError)
 nmap g]d <Action>(GotoNextError)
+
 nmap g[m <Action>(MethodUp)
 nmap g]m <Action>(MethodDown)
+
 nmap g[c <Action>(GotoPreviousChange)
 nmap g]c <Action>(GotoNextChange)
+
 nmap gd <Action>(GotoDeclaration)
 nmap gi <Action>(GotoImplementation)
-nmap gr <Action>(GotoRelatedSymbol)
+
 nmap gs <Action>(GotoSuperMethod)
-nmap gt <Action>(GotoTest)
+
+nmap gr <Action>(GotoRelatedSymbol)
 nmap gu <Action>(FindUsages)
+
+nmap gt <Action>(GotoTest)
 
 nmap <leader>cb <Action>(CommentByBlockComment)
 nmap <leader>cc <Action>(CommentByLineComment)
 vmap <leader>cb <Action>(CommentByBlockComment)
 vmap <leader>cc <Action>(CommentByLineComment)
+vmap <leader>sw <Action>(SurroundWith)
 
-nmap <leader>e :NERDTreeFocus<CR>
-nmap <leader>ee <Action>(ShowErrorDescription)
-nmap <leader>ff <Action>(GotoFile)
-nmap <leader>fs <Action>(FileStructurePopup)
+nmap <leader>n :NERDTreeFocus<CR>
+
+nmap <leader>e <Action>(ShowErrorDescription)
+
+" Press TAB or Shift TAB while Ace is active to scroll screen to see all matches
+nmap FF <Action>(AceTargetAction)
+nmap ff <Action>(AceAction)
+nmap fl <Action>(AceLineAction)
+
+nmap <leader>fi <Action>(GotoFile)
+nmap <leader>st <Action>(FileStructurePopup)
 nmap <leader>fw <Action>(FindInPath)
 nmap <leader>fm <Action>(ReformatCode)
 
@@ -114,6 +122,5 @@ vmap <leader>ww <Action>(com.andrewbrookins.idea.wrap.WrapAction)
 nmap <leader>ww <Action>(com.andrewbrookins.idea.wrap.WrapParagraphAction)
 
 nmap <leader>x <Action>(CloseEditor)
-nnoremap <leader><cr> :nohlsearch<cr>
-vmap <leader>sw <Action>(SurroundWith)
 
+nnoremap <leader><cr> :nohlsearch<cr>
