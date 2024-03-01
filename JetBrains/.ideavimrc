@@ -70,21 +70,22 @@ nnoremap <S-tab> gT
 inoremap <C-s> <Esc>:wa<CR>
 nnoremap <C-s> :wa<CR>
 
-nmap g( <Action>(GotoPrevElementUnderCaretUsage)
-nmap g) <Action>(GotoNextElementUnderCaretUsage)
+nmap gno <Action>(GotoPrevElementUnderCaretUsage)
+nmap gpo <Action>(GotoNextElementUnderCaretUsage)
 
-nmap g[d <Action>(GotoPreviousError)
-nmap g]d <Action>(GotoNextError)
+nmap gne <Action>(GotoPreviousError)
+nmap gpe <Action>(GotoNextError)
+nmap <leader>e <Action>(ShowErrorDescription)
 
-nmap g[m <Action>(MethodUp)
-nmap g]m <Action>(MethodDown)
+nmap gnm <Action>(MethodUp)
+nmap gpm <Action>(MethodDown)
 
-nmap g[c <Action>(GotoPreviousChange)
-nmap g]c <Action>(GotoNextChange)
+nmap gnc <Action>(GotoPreviousChange)
+nmap gpc <Action>(GotoNextChange)
 
 nmap gd <Action>(GotoDeclaration)
+nmap gtd <Action>(GotoTypeDeclaration)
 nmap gi <Action>(GotoImplementation)
-
 nmap gs <Action>(GotoSuperMethod)
 
 nmap gr <Action>(GotoRelatedSymbol)
@@ -92,15 +93,15 @@ nmap gu <Action>(FindUsages)
 
 nmap gt <Action>(GotoTest)
 
-nmap <leader>cb <Action>(CommentByBlockComment)
 nmap <leader>cc <Action>(CommentByLineComment)
-vmap <leader>cb <Action>(CommentByBlockComment)
 vmap <leader>cc <Action>(CommentByLineComment)
+
+nmap <leader>cb <Action>(CommentByBlockComment)
+vmap <leader>cb <Action>(CommentByBlockComment)
+
 vmap <leader>sw <Action>(SurroundWith)
 
 nmap <leader>n :NERDTreeFocus<CR>
-
-nmap <leader>e <Action>(ShowErrorDescription)
 
 " Press TAB or Shift TAB while Ace is active to scroll screen to see all matches
 nmap FF <Action>(AceTargetAction)
