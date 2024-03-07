@@ -15,6 +15,7 @@ set showmode " Show current mode (insert, visual, etc.) in the status line
 set timeoutlen=500 " Time to wait (in milliseconds) before considering a mapped key as not part of a sequence
 set visualbell " Use visual bell instead of an audible bell for notifications
 set which-key " Show available keybindings after a short delay
+set ideajoin " Use IDEA's join lines command instead of IDEAVim's
 
 """ Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -64,6 +65,10 @@ nnoremap <S-tab> gT
 " unless you remap it, see below.
 
 " ShowHoverInfo is mapped to <leader>k by default
+
+" Keep the cursor centered when scrolling by half page
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
 
 " Ctrl-W plus S or V add horizontal and vertical splits by default
 " Ctrl-W plus H, J, K, L to move between splits comes by default
