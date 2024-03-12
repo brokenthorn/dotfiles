@@ -59,6 +59,12 @@ nmap / <Action>(Find)
 nnoremap <tab> gt
 nnoremap <S-tab> gT
 
+noremap <Esc> <nop>
+
+" Insert empty lines above and below:
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
+
 """ Mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " WARN: Don"t remap Ctrl+; as that is used by AceJump,
@@ -75,6 +81,12 @@ nnoremap <C-u> <C-u>zz
 inoremap <C-s> <Esc>:wa<CR>
 nnoremap <C-s> :wa<CR>
 
+" Move lines up and down in normal and insert mode
+nnoremap <C-j> :m +1<CR>
+nnoremap <C-k> :m -2<CR>
+inoremap <C-j> <Esc>:m +1<CR>gi
+inoremap <C-k> <Esc>:m -2<CR>gi
+
 nmap gno <Action>(GotoPrevElementUnderCaretUsage)
 nmap gpo <Action>(GotoNextElementUnderCaretUsage)
 
@@ -82,21 +94,22 @@ nmap gne <Action>(GotoPreviousError)
 nmap gpe <Action>(GotoNextError)
 nmap <leader>e <Action>(ShowErrorDescription)
 
-nmap gnm <Action>(MethodUp)
-nmap gpm <Action>(MethodDown)
-
 nmap gnc <Action>(GotoPreviousChange)
 nmap gpc <Action>(GotoNextChange)
 
+nmap [ <Action>(MethodUp)
+nmap ] <Action>(MethodDown)
+
 nmap gd <Action>(GotoDeclaration)
 nmap gtd <Action>(GotoTypeDeclaration)
+nmap gt <Action>(GotoTest)
 nmap gi <Action>(GotoImplementation)
 nmap gs <Action>(GotoSuperMethod)
 
 nmap gr <Action>(GotoRelatedSymbol)
 nmap gu <Action>(FindUsages)
 
-nmap gt <Action>(GotoTest)
+nmap <leader>gen <Action>(Generate)
 
 nmap <leader>cc <Action>(CommentByLineComment)
 vmap <leader>cc <Action>(CommentByLineComment)
