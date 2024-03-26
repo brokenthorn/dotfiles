@@ -7,11 +7,9 @@ set idearefactormode=keep " Keep the current mode when refactoring
 set ignorecase smartcase " Ignore case in search, unless an uppercase letter is used
 set incsearch " Incremental search - show matches as you type
 set relativenumber " Display line numbers relative to the cursor position
-set scrolloff=4 " Keep at least 1 lines above and below the cursor during scrolling
-set sidescrolloff=4
 set showcmd " Show command being entered
 set showmode " Show current mode (insert, visual, etc.) in the status line
-"set notimeout
+" don't try to set scroll offset b/c it makes full file reformatting jump the cursor
 set timeoutlen=500 " Time to wait (in milliseconds) before considering a mapped key as not part of a sequence
 set visualbell " Use visual bell instead of an audible bell for notifications
 set which-key " Show available keybindings after a short delay
@@ -59,8 +57,6 @@ nmap / <Action>(Find)
 nnoremap <tab> gt
 nnoremap <S-tab> gT
 
-noremap <Esc> <nop>
-
 " Insert empty lines above and below:
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
@@ -70,7 +66,7 @@ nmap <CR> o<Esc>
 " WARN: Don"t remap Ctrl+; as that is used by AceJump,
 " unless you remap it, see below.
 
-" ShowHoverInfo is mapped to <leader>k by default
+" ShowHoverInfo is mapped to <S-K> by default
 
 " Keep the cursor centered when scrolling by half page
 nnoremap <C-d> <C-d>zz
@@ -136,6 +132,7 @@ nmap <leader>hu <Action>(HighlightUsagesInFile)
 nmap <leader>oi <Action>(OptimizeImports)
 nmap <leader>ra <Action>(RenameElement)
 nmap <leader>rl <Action>(RecentLocations)
+nmap <leader>rf <Action>(RecentFiles)
 nmap <leader>rr <Action>(Refactorings.QuickListPopupAction)
 
 vmap <leader>ww <Action>(com.andrewbrookins.idea.wrap.WrapAction)
